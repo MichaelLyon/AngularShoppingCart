@@ -6,22 +6,41 @@
     </select>
     Search by Name:
     <input type="text" name="name" value="">
-    <input style="float:right"type="button" name="name" value="Checkout!">
+    <input style="float:right" type="button" name="name" value="Checkout!">
   </div>
   <div class="itemTableDiv">
-    <TABLE BORDER="1"    WIDTH="100%"   CELLPADDING="4" CELLSPACING="3">
-   <TR>
-      <TH COLSPAN="1"><BR><H3>TABLE TITLE</H3>
-      </TH>
-   </TR>
-   <TR>
-      <TH>Column A</TH>
-      <TH>Column B</TH>
-   </TR>
-   <TR ALIGN="CENTER">
-      <TD>Data 1</TD>
-      <TD>Data 2</TD>
-   </TR>
-</TABLE>
+    <table border="1" width="100%" cellpadding="4" cellspacing="3">
+      <tr>
+        <th colspan="1" width="25%">
+          <h5>tea</h5></th>
+        <th colspan="1">
+          <h5>information</h5></th>
+      </tr>
+      <tr ng-repeat='tea in view.allItems'>
+        <td><img src="{{tea.imageUrl}}" alt="" /></td>
+        <td>
+          <div class="leftTableDiv">
+            <div class="content">
+              <h3>{{tea.name}}</h3><br>
+              <b>Price: </b>{{tea.price}}<br>
+              <b>Caffeine Scale: </b>{{tea.caffeineScale}}<br>
+              <b>Ingredients: </b>{{tea.ingredients}}<br>
+              <b>Rating: </b>{{tea.rating}}<br>
+              <b>In Stock: </b>{{tea.inStock}}<br>
+              <b>Categories: </b>
+                <ul ng-repeat='category in tea.categories'>
+                  <li>{{category}}</li>
+                </ul>
+            </div>
+          </div>
+          <div class="rightTableDiv">
+            <select class="quantity" name="">
+              <option value="option">1</option>
+            </select>
+            <button class='btn btn-warning' type="button" name="button">Add To Bag</button>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>

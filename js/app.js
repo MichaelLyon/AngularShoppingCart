@@ -2,7 +2,7 @@ angular.module('shoppingCart', ['shoppingCart.controllers', 'shoppingCart.filter
  'ngRoute','ui.router'])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise('')
+	$urlRouterProvider.otherwise('/')
 	$stateProvider
 		.state('main', {
 			url: '/main',
@@ -10,4 +10,5 @@ angular.module('shoppingCart', ['shoppingCart.controllers', 'shoppingCart.filter
 			controller: 'mainPageController',
 			controllerAs: 'mainCtrl'
 		})
+
 }])

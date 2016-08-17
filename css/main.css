@@ -1,5 +1,22 @@
-body{
+body {
   padding: 0px;
   margin: 0px;
   background-color: lightblue;
+}
+
+td {
+  vertical-align: top;
+}
+.leftTableDiv{
+  display: inline-block;
+  width:55%;
+  height: 100%;
+}
+.rightTableDiv{
+  display: inline-block;
+  width:30%;
+  height: 100%;
+}
+.content{
+  display: inline-block;
 }
