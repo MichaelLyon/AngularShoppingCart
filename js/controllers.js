@@ -1,10 +1,8 @@
 var shoppingCart = angular.module('shoppingCart.controllers', [])
 
-shoppingCart.controller('mainPageController', ['$scope', '$state', function($scope, $state) {
+shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', function($scope, $state, Items) {
   $scope.view = {};
+  $scope.Items= Items;
+  console.log($scope.Items.all());
   $scope.view.message = "Welcome!"
-}])
-
-.controller('homeController', ['$http', '$rootScope', '$state', function($http, $rootScope, $state) {
-
 }])
