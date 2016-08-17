@@ -1,6 +1,6 @@
 var shoppingCart = angular.module('shoppingCart.controllers', [])
 
-shoppingCart.controller('mainPageController', ['$scope', function($scope) {
+shoppingCart.controller('mainPageController', ['$scope', '$state', function($scope, $state) {
   $scope.view = {};
   $scope.view.message = "Welcome!"
 }])
