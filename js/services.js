@@ -1,6 +1,8 @@
 angular.module('shoppingCart.services', [])
 
 .service('Items', function() {
+	var checkOutBag = [];
+
 	var items = [{
 		"_id": "55c8ee82152165d244b98300",
 		"name": "Bayard stew",
@@ -124,7 +126,7 @@ angular.module('shoppingCart.services', [])
 			}
 			return null;
 		},
-		getCategories: function() {
+		getCategories: function() { //TODO: Use object keys. cant have dups.
 			var categoryArray = [];
 			for (var i = 0; i < items.length; i++) {
 				for (var item in items[i].categories) {
@@ -137,10 +139,32 @@ angular.module('shoppingCart.services', [])
 			}
 			return categoryArray;
 		},
-		storeItems: function(itemId){
-			var itemsInBag = [];
-			itemsInBag.push(itemId);
-			return itemsInBag;
-		}
+		pushObjToCart: function(obj) {
+			for (var i = 0; i <= checkOutBag.length; i++) {
+				if (checkOutBag.length < 1) {
+					console.log('son');
+					checkOutBag[i] = obj;
+					break;
+				} else if (checkOutBag[i]._id === obj._id) {
+					console.log('cha');
+					checkOutBag[i].quantity += obj.quantity;
+					break;
+				} else if (checkOutBag[i]._id.indexOf(obj._id) > -1){
+					console.log('check');
+					checkOutBag.push(obj)
+					break;
+				}else{
+					continue;
+				}
+			}
+			return checkOutBag
+		},
+		storeItems: function(itemId, quantity) {
+			var obj = {};
+			obj._id = itemId;
+			obj.quantity = Number(quantity)
+			return obj;
+		},
+
 	}
 })

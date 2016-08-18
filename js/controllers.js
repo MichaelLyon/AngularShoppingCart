@@ -1,24 +1,28 @@
 var shoppingCart = angular.module('shoppingCart.controllers', [])
 
-shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', 'checkInStockFilter',
- 'addDecimalFilter', function($scope, $state, Items, checkInStockFilter, addDecimalFilter) {
+shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', 'checkInStockFilter', 'addDecimalFilter',
+	function($scope, $state, Items, checkInStockFilter, addDecimalFilter) {
 
-  $scope.view = {};
-  $scope.Items= Items;
-  $scope.checkInStockFilter = checkInStockFilter;
-  $scope.addDecimalFilter = addDecimalFilter;
-  $scope.view.allItems = Items.all();
-  $scope.view.allCategories = Items.getCategories();
+		$scope.view = {};
+		$scope.Items = Items;
+		$scope.checkInStockFilter = checkInStockFilter;
+		$scope.addDecimalFilter = addDecimalFilter;
+		$scope.view.allItems = Items.all();
+		$scope.view.allCategories = Items.getCategories();
 
-  $scope.addToBag = function(tea) {
-    (Items.storeItems(tea))
-  }
-  console.log($scope.view.allItems);
-}])
+		$scope.addToBag = function(tea) {
+      console.log('Checkout Controller');
+      console.log(Items.pushObjToCart(Items.storeItems(tea,1)));
 
-shoppingCart.controller('checkoutPageController', ['$scope', '$state', 'Items', 'checkInStockFilter',
- 'addDecimalFilter', function($scope, $state, Items, checkInStockFilter, addDecimalFilter) {
+		}
+		console.log($scope.view.allItems);
+	}
+])
 
-  $scope.view ={};
-  console.log($scope.view);
-}])
+shoppingCart.controller('checkoutPageController', ['$scope', '$state', 'Items', 'checkInStockFilter', 'addDecimalFilter',
+	function($scope, $state, Items, checkInStockFilter, addDecimalFilter) {
+
+		$scope.view = {};
+
+	}
+])
