@@ -10,5 +10,11 @@ angular.module('shoppingCart', ['shoppingCart.controllers', 'shoppingCart.filter
 			controller: 'mainPageController',
 			controllerAs: 'mainCtrl'
 		})
+    .state('bag', {
+			url: '/bag',
+			templateUrl: '../paritals/bag.html',
+			controller: 'checkoutPageController',
+			controllerAs: 'checkCtrl'
+		})
 
 }])
