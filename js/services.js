@@ -149,6 +149,7 @@ angular.module('shoppingCart.services', [])
 					checkOutBag[i].quantity += obj.quantity;
 				}
 			}
+			
 			return checkOutBag
 		},
 		storeItems: function(itemId, quantity) {
@@ -160,22 +161,3 @@ angular.module('shoppingCart.services', [])
 
 	}
 })
-//
-// for (var i = 0; i <= checkOutBag.length; i++) {
-// 	if (checkOutBag.length < 1) {
-// 		console.log('son');
-// 		checkOutBag[i] = obj;
-// 		break;
-// 	} else if (checkOutBag[i]._id === obj._id) {
-// 		console.log('cha');
-// 		checkOutBag[i].quantity += obj.quantity;
-// 		break;
-// 	} else if (checkOutBag[i]._id.indexOf(obj._id) > -1){
-// 		console.log('check');
-// 		checkOutBag.push(obj)
-// 		break;
-// 	}else{
-// 		continue;
-// 	}
-// }
-// return checkOutBag
