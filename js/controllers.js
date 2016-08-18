@@ -13,7 +13,6 @@ shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', 'che
 		$scope.addToBag = function(tea) {
       console.log('Checkout Controller');
       console.log(Items.pushObjToCart(Items.storeItems(tea,1)));
-
 		}
 		console.log($scope.view.allItems);
 	}

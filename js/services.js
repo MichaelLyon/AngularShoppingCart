@@ -140,21 +140,13 @@ angular.module('shoppingCart.services', [])
 			return categoryArray;
 		},
 		pushObjToCart: function(obj) {
-			for (var i = 0; i <= checkOutBag.length; i++) {
-				if (checkOutBag.length < 1) {
-					console.log('son');
-					checkOutBag[i] = obj;
-					break;
-				} else if (checkOutBag[i]._id === obj._id) {
-					console.log('cha');
+			if(checkOutBag.length < 1){
+				checkOutBag.push(obj)
+				return checkOutBag;
+			}
+			for (var i = 0; i < checkOutBag.length; i++) {
+				if(checkOutBag[i]._id === obj._id){
 					checkOutBag[i].quantity += obj.quantity;
-					break;
-				} else if (checkOutBag[i]._id.indexOf(obj._id) > -1){
-					console.log('check');
-					checkOutBag.push(obj)
-					break;
-				}else{
-					continue;
 				}
 			}
 			return checkOutBag
@@ -168,3 +160,22 @@ angular.module('shoppingCart.services', [])
 
 	}
 })
+//
+// for (var i = 0; i <= checkOutBag.length; i++) {
+// 	if (checkOutBag.length < 1) {
+// 		console.log('son');
+// 		checkOutBag[i] = obj;
+// 		break;
+// 	} else if (checkOutBag[i]._id === obj._id) {
+// 		console.log('cha');
+// 		checkOutBag[i].quantity += obj.quantity;
+// 		break;
+// 	} else if (checkOutBag[i]._id.indexOf(obj._id) > -1){
+// 		console.log('check');
+// 		checkOutBag.push(obj)
+// 		break;
+// 	}else{
+// 		continue;
+// 	}
+// }
+// return checkOutBag
