@@ -1,7 +1,7 @@
 angular.module('shoppingCart.services', [])
 
 .service('Items', function() {
-	var checkOutBag = [];
+	var checkOutBag = {};
 
 	var items = [{
 		"_id": "55c8ee82152165d244b98300",
@@ -10,6 +10,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 244,
 		"price": 1540,
 		"inStock": true,
+		"amountInStock": 20,
 		"rating": 1,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32664_d?$cimg$",
 		"__v": 0,
@@ -21,6 +22,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 49,
 		"price": 7348,
 		"inStock": true,
+		"amountInStock": 10,
 		"rating": 2,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32303_d?$cimg$",
 		"__v": 0,
@@ -32,6 +34,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 38,
 		"price": 4991,
 		"inStock": true,
+		"amountInStock": 10,
 		"rating": 4,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31358_d?$cimg$",
 		"__v": 0,
@@ -43,6 +46,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 153,
 		"price": 5496,
 		"inStock": true,
+		"amountInStock": 10,
 		"rating": 1,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31358_d?$cimg$",
 		"__v": 0,
@@ -54,6 +58,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 181,
 		"price": 2445,
 		"inStock": true,
+		"amountInStock": 10,
 		"rating": 1,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32621_d?$cimg$",
 		"__v": 0,
@@ -65,6 +70,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 241,
 		"price": 4486,
 		"inStock": true,
+		"amountInStock": 15,
 		"rating": 3,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31359_d?$cimg$",
 		"__v": 0,
@@ -76,6 +82,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 230,
 		"price": 6973,
 		"inStock": true,
+		"amountInStock": 10,
 		"rating": 3,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32303_d?$cimg$",
 		"__v": 0,
@@ -87,6 +94,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 122,
 		"price": 6003,
 		"inStock": true,
+		"amountInStock": 10,
 		"rating": 2,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/31358_d?$cimg$",
 		"__v": 0,
@@ -98,6 +106,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 196,
 		"price": 1374,
 		"inStock": true,
+		"amountInStock": 10,
 		"rating": 3,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32174_d?$cimg$",
 		"__v": 0,
@@ -109,6 +118,7 @@ angular.module('shoppingCart.services', [])
 		"caffeineScale": 196,
 		"price": 4158,
 		"inStock": true,
+		"amountInStock": 12,
 		"rating": 2,
 		"imageUrl": "http://s7d5.scene7.com/is/image/Teavana/32621_d?$cimg$",
 		"__v": 0,
@@ -118,6 +128,24 @@ angular.module('shoppingCart.services', [])
 		all: function() {
 			return items;
 		},
+		countOption: function() {
+			var objectReturn = {};
+			for (var i = 1; i < 11; i++) {
+				objectReturn[i] = i
+			}
+			return objectReturn;
+		},
+		createCheckoutObject: function(tea,value) {
+			var checkoutObj = {};
+			checkoutObj[tea._id] = tea;
+			checkoutObj.quantity= value;
+			return checkoutObj;
+		},
+		makeArray: function(object){
+			var arrayHolder = [];
+			arrayHolder.push(object);
+			return arrayHolder;
+		}
 		get: function(itemId) {
 			for (var i = 0; i < items.length; i++) {
 				if (items[i]._id === itemId) {
@@ -138,26 +166,6 @@ angular.module('shoppingCart.services', [])
 				}
 			}
 			return categoryArray;
-		},
-		pushObjToCart: function(obj) {
-			if(checkOutBag.length < 1){
-				checkOutBag.push(obj)
-				return checkOutBag;
-			}
-			for (var i = 0; i < checkOutBag.length; i++) {
-				if(checkOutBag[i]._id === obj._id){
-					checkOutBag[i].quantity += obj.quantity;
-				}
-			}
-			
-			return checkOutBag
-		},
-		storeItems: function(itemId, quantity) {
-			var obj = {};
-			obj._id = itemId;
-			obj.quantity = Number(quantity)
-			return obj;
-		},
-
+		}
 	}
 })
