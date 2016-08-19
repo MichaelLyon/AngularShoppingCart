@@ -19,6 +19,7 @@ shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', 'che
 
     $scope.addToBag = function(tea, quantity) {
       tea.quantity += Number(quantity);
+      tea.subtotal = (Number(quantity) * (tea.price))
       Items.createCheckoutObject(tea);
 
       console.log(tea);
@@ -35,6 +36,24 @@ shoppingCart.controller('checkoutPageController', ['$scope', '$state', 'Items', 
 	function($scope, $state, Items, checkInStockFilter, addDecimalFilter) {
 
 		$scope.view = {};
+    $scope.view.teas = Items.createCheckoutObject();
+    $scope.addDecimalFilter = addDecimalFilter;
+    $scope.view.allSubtotal = Items.createSubtotal($scope.view.teas);
+    $scope.view.editBool = false;
 
+    $scope.removeItem = function (tea) {
+      Items.removeItemFromCheckout(tea);
+    }
+    $scope.editItemQuantity = function(tea, newQuantity){
+      $scope.view.editBool = false;
+      tea.quantity = newQuantity;
+      tea.subtotal = (Number(newQuantity) * (tea.price))
+      $scope.view.allSubtotal = Items.createSubtotal($scope.view.teas);
+      Items.createCheckoutObject(tea);
+      console.log(newQuantity);
+      console.log(tea);
+
+
+    }
 	}
 ])

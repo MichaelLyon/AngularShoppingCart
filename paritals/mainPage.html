@@ -6,7 +6,7 @@
     </select>
     Search by Name:
     <input type="text" name="name" value="" ng-model='search'>
-    <input style="float:right" type="button" name="name" value="Checkout!">
+    <a href="#/bag"><button style="float:right" type="button" name="button">Checkout!</button></a>
   </div>
   <div class="itemTableDiv">
     <table border="1" width="100%" cellpadding="4" cellspacing="3">
@@ -14,7 +14,9 @@
         <th colspan="1" width="25%">
           <h5>tea</h5></th>
         <th colspan="1">
-          <h5>information</h5></th>
+          <h5 style="display:inline">information</h5> <select style="float:right"class="" name="">
+            <option value="option">highest</option>
+          </select></th>
       </tr>
       <tr ng-repeat='tea in view.allItems | filter:search'>
         <td><img src="{{tea.imageUrl}}" alt="" /></td>

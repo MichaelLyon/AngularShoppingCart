@@ -135,13 +135,31 @@ angular.module('shoppingCart.services', [])
 			}
 			return objectReturn;
 		},
+		createSubtotal: function(arrayOfObjects){
+			var subtotal = 0;
+			arrayOfObjects.forEach(function(ele){
+				subtotal += ((ele.price)*(ele.quantity))
+			})
+			return subtotal;
+		},
 		createCheckoutObject: function(tea) {
+			if(tea == undefined){
+				return checkoutArray;
+			}
 			if(checkoutArray.indexOf(tea) > -1){
 			}else{
 				checkoutArray.push(tea);
 			}
 			return checkoutArray;
 		},
+		removeItemFromCheckout: function(item) {
+			var index = checkoutArray.indexOf(item);
+			if (index > -1) {
+			    checkoutArray.splice(index, 1);
+			}
+			return checkoutArray;
+		},
+		// updateCheckoutArray: function()
 		get: function(itemId) {
 			for (var i = 0; i < items.length; i++) {
 				if (items[i]._id === itemId) {

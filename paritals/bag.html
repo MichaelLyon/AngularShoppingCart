@@ -1,3 +1,39 @@
 <div class="">
-  Bag Page
+  <h1 style="display:inline; float:left">My Shopping Bag</h1>
+  <h1 style="display:inline; float:right">Order Total: ${{addDecimalFilter(view.allSubtotal)}} </h1>
+  <table border="1" width="100%" cellpadding="4" cellspacing="3">
+    <tr>
+      <th colspan="1" width="50%">
+        <h5>Product</h5></th>
+      <th colspan="1" width="10%">
+        <h5>Quantity</h5></th>
+      <th colspan="1" width="10%">
+        <h5>SubTotal</h5></th>
+    </tr>
+    <tr ng-repeat='tea in view.teas | filter:search'>
+      <td><img src="{{tea.imageUrl}}" alt="" />
+        <b>Categories: </b>
+        <ul ng-repeat='category in tea.categories'>
+          <li>{{category}}</li>
+        </ul>
+      </td>
+      <td ng-show='view.editBool === false'>
+             {{tea.quantity}}
+      </td>
+      <td ng-show='view.editBool === true'>
+        <input type="number" ng-model='saveNewQuantity' name="name" value="">
+      </td>
+      <td>
+        ${{addDecimalFilter(tea.subtotal)}}
+      </td>
+      <td>
+        <div class="edit" style="display:inline-block">
+          <button type="button"class="checkoutEditButtons btn btn-warning"ng-show='view.editBool === false' ng-click="view.editBool = true" name="button">Edit</button>
+          <button type="button"class="checkoutEditButtons btn btn-warning" ng-show='view.editBool === true' ng-click="editItemQuantity(tea, saveNewQuantity)" name="button">Save</button>
+
+        </div>
+        <button type="button"class="checkoutEditButtons btn btn-danger" ng-click="removeItem(tea)" name="button">Delete</button>
+      </td>
+    </tr>
+  </table>
 </div>
