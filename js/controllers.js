@@ -24,9 +24,6 @@ shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', 'che
       tea.subtotal = (Number(quantity) * (tea.price))
       Items.createCheckoutObject(tea);
 		}
-
-    console.log($scope.view.allItems);
-
 	}
 ])
 
@@ -49,10 +46,6 @@ shoppingCart.controller('checkoutPageController', ['$scope', '$state', 'Items', 
       tea.subtotal = (Number(newQuantity) * (tea.price))
       $scope.view.allSubtotal = Items.createSubtotal($scope.view.teas);
       Items.createCheckoutObject(tea);
-      console.log(newQuantity);
-      console.log(tea);
-
-
     }
 	}
 ])
