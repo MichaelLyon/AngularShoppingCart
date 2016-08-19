@@ -11,7 +11,7 @@ shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', 'che
 		$scope.view.allCategories = Items.getCategories();
 
     $scope.view.allItems.forEach(function(ele){
-      ele.quantity = 0;
+      ele.quantity = 1;
     })
 
     //Option Selector
