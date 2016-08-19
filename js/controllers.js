@@ -18,11 +18,12 @@ shoppingCart.controller('mainPageController', ['$scope', '$state', 'Items', 'che
     $scope.view.optionValues = Items.countOption();
 
     $scope.addToBag = function(tea, quantity) {
-      var checkitems = Items.createCheckoutObject(tea,quantity);
-      console.log(checkitems);
+      tea.quantity += Number(quantity);
+      Items.createCheckoutObject(tea);
+
       console.log(tea);
       console.log(quantity);
-      tea.quantity += Number(quantity);
+
 		}
 
     console.log($scope.view.allItems);

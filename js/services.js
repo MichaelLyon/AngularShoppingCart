@@ -1,7 +1,7 @@
 angular.module('shoppingCart.services', [])
 
 .service('Items', function() {
-	var checkOutBag = {};
+	var checkoutArray = [];
 
 	var items = [{
 		"_id": "55c8ee82152165d244b98300",
@@ -135,17 +135,13 @@ angular.module('shoppingCart.services', [])
 			}
 			return objectReturn;
 		},
-		createCheckoutObject: function(tea,value) {
-			var checkoutObj = {};
-			checkoutObj[tea._id] = tea;
-			checkoutObj.quantity= value;
-			return checkoutObj;
+		createCheckoutObject: function(tea) {
+			if(checkoutArray.indexOf(tea) > -1){
+			}else{
+				checkoutArray.push(tea);
+			}
+			return checkoutArray;
 		},
-		makeArray: function(object){
-			var arrayHolder = [];
-			arrayHolder.push(object);
-			return arrayHolder;
-		}
 		get: function(itemId) {
 			for (var i = 0; i < items.length; i++) {
 				if (items[i]._id === itemId) {
