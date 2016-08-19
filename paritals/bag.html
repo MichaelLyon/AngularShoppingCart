@@ -11,11 +11,13 @@
         <h5>SubTotal</h5></th>
     </tr>
     <tr ng-repeat='tea in view.teas | filter:search'>
-      <td><img src="{{tea.imageUrl}}" alt="" />
+      <td><img src="{{tea.imageUrl}}" alt="" style='display:block;'/>
         <b>Categories: </b>
         <ul ng-repeat='category in tea.categories'>
           <li>{{category}}</li>
         </ul>
+        <b>Caffeine Scale </b>{{tea.caffeineScale}}<br>
+        <b>Rataing: </b>{{tea.rating}}
       </td>
       <td ng-show='view.editBool === false'>
              {{tea.quantity}}
