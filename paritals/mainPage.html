@@ -1,8 +1,8 @@
 <div class="mainPageContainer">
   <div class="topSortingOptions">
     Search by Category:
-    <select class="categorySelectBox" name="">
-      <option value="option" ng-repeat="cat in view.allCategories">{{cat}}</option>
+    <select class="categorySelectBox" ng-model='search'>
+      <option value="{{cat}}" ng-repeat="cat in view.allCategories">{{cat}}</option>
     </select>
     Search by Name:
     <input type="text" name="name" value="" ng-model='search'>
@@ -15,7 +15,8 @@
           <h5>tea</h5></th>
         <th colspan="1">
           <h5 style="display:inline">information</h5> <select style="float:right"class="" name="">
-            <option value="option">highest</option>
+            <option  value="option">Highest Price</option>
+            <option  value="option">Lowest Price</option>
           </select></th>
       </tr>
       <tr ng-repeat='tea in view.allItems | filter:search'>
